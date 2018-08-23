@@ -1,0 +1,57 @@
+Exercises
+
+1. Pros of linked list:
+	- Length of a linked list is just how many ever elements in the list. There's no empty placeholders.
+	- It doesn't require as much memory as array because each node is independent in memory, and so, it allows linked list to grow to immense sizes.
+   Cons of linked list:
+	- Because node memory is independent, it's not efficient to access an element within the list.
+
+2. A real world example of a linked list would be a first come first serve basis. A good example would be class registration wait list. People in the wait list can be stored in a linked list. When a space opens up, the space will be given to the first person from the head to the tail who wants to accept. People who got offered but denied would be removed from the list.
+
+Programming Questions
+
+1. In the pseudocode, after current set to head, it immediately set current.next to node, which is wrong unless current.next is null. It should traverse the linked list first until it hits the end of the list.
+
+function push(element) {
+   var node = new Node;
+	node.value = element;
+	node.next = NULL;
+
+	if (head == null) {
+		head = node;
+	} else {
+		temp = head;
+		while (temp.next)
+			temp = temp.next;
+		temp.next = node;
+	}
+}
+
+2. function removeDeplicates(llist) {
+		var prev = llist;
+		var obj[prev.value] = true;
+		cur = prev.next;
+		while (cur) {
+			if (!obj[cur.value]) {
+				obj[cur.value] = true;
+				prev = prev.next;
+			} else {
+				prev.next = cur.next;
+			}
+			cur = cur.next;
+		}
+
+		return llist;
+	}
+
+3. function reverse(llist) {
+		var prev = null;
+		var cur = llist;
+		while (cur) {
+			var next = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = next;
+		}
+		return prev;
+	}
