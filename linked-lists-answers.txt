@@ -12,20 +12,31 @@ Programming Questions
 
 1. In the pseudocode, after current set to head, it immediately set current.next to node, which is wrong unless current.next is null. It should traverse the linked list first until it hits the end of the list.
 
-function push(element) {
-   var node = new Node;
-	node.value = element;
-	node.next = NULL;
-
-	if (head == null) {
-		head = node;
-	} else {
-		temp = head;
-		while (temp.next)
-			temp = temp.next;
-		temp.next = node;
+	class Node {
+		constructor (val) {
+			this.value = val;
+			this.next = null;
+		}
 	}
-}
+	class LinkedList {
+		constructor() {
+			this.head = null;
+			this.length = 0;
+		}
+
+		function push(element) {
+		  var node = new Node(element);
+
+			if (head == null) {
+				head = node;
+			} else {
+				temp = head;
+				while (temp.next)
+					temp = temp.next;
+				temp.next = node;
+			}
+		}
+	}
 
 2. function removeDeplicates(llist) {
 		var prev = llist;
