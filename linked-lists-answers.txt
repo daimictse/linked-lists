@@ -12,57 +12,61 @@ Programming Questions
 
 1. In the pseudocode, after current set to head, it immediately set current.next to node, which is wrong unless current.next is null. It should traverse the linked list first until it hits the end of the list.
 
-	class Node {
+class Node {
 		constructor (val) {
 			this.value = val;
 			this.next = null;
 		}
-	}
-	class LinkedList {
+}
+class LinkedList {
 		constructor() {
 			this.head = null;
 			this.length = 0;
 		}
 
-		function push(element) {
+		push(element) {
 		  var node = new Node(element);
 
-			if (head == null) {
-				head = node;
+			if (this.head == null) {
+				this.head = node;
 			} else {
-				temp = head;
+				var temp = this.head;
 				while (temp.next)
 					temp = temp.next;
 				temp.next = node;
 			}
+            this.length++;
+            return length;
 		}
-	}
+}
+2. 	function removeDuplicates(llist) {
+			var prev = null;
+			var obj = new Object();
+			var cur = llist.head;
+			while (cur) {
+	            var key = cur.value;
+				if (!obj[key]) {
+					obj[key] = true;
+					prev = cur;
+				} else {
+					prev.next = cur.next;
+	                llist.length--;
 
-2. function removeDeplicates(llist) {
-		var prev = llist;
-		var obj[prev.value] = true;
-		cur = prev.next;
-		while (cur) {
-			if (!obj[cur.value]) {
-				obj[cur.value] = true;
-				prev = prev.next;
-			} else {
-				prev.next = cur.next;
+				}
+				cur = cur.next;
 			}
-			cur = cur.next;
-		}
-
-		return llist;
+			return llist;
 	}
 
-3. function reverse(llist) {
-		var prev = null;
-		var cur = llist;
-		while (cur) {
-			var next = cur.next;
-			cur.next = prev;
-			prev = cur;
-			cur = next;
-		}
-		return prev;
+3.	function reverse(llist) {
+			var prev = null;
+			var cur = llist.head;
+			while (cur) {
+				var next = cur.next;
+				cur.next = prev;
+				prev = cur;
+				cur = next;
+			}
+      llist.head = prev;
+			return llist;
 	}
